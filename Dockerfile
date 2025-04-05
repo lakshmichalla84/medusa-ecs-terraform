@@ -1,21 +1,12 @@
-FROM node:20-alpine
-
+# Dockerfile
+FROM node:18
 
 WORKDIR /app
 
-
 COPY . .
 
-
-RUN npm install && \
-    npm install @medusajs/workflows && \
-    npm install loader 
-
-
-RUN npx medusa build
-
+RUN yarn install && yarn build
 
 EXPOSE 9000
 
-
-CMD ["npx", "medusa", "start"]
+CMD ["yarn", "start"]
